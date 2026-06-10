@@ -24,7 +24,7 @@ const Calendar = () => {
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%', backgroundColor: '#fff', borderRadius: '8px', padding: '16px', color: '#334155' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
         <h2 style={{ fontSize: '18px', fontWeight: 600, margin: 0 }}>
-          {date.toLocaleString('default', { month: 'long' })} {year}
+          {date.toLocaleString('en-US', { month: 'long' })} {year}
         </h2>
         <div style={{ display: 'flex', gap: '8px' }}>
           <button onClick={prevMonth} style={{ background: 'none', border: '1px solid #e2e8f0', borderRadius: '4px', cursor: 'pointer', padding: '4px' }}>

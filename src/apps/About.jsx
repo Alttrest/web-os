@@ -15,7 +15,7 @@ const About = () => {
           <Info size={32} color="white" />
         </div>
         <div>
-          <h1 style={{ fontSize: '24px', fontWeight: 600, margin: 0 }}>Alttre.s ios</h1>
+          <h1 style={{ fontSize: '24px', fontWeight: 600, margin: 0 }}>alttre.os</h1>
           <p style={{ color: 'var(--text-secondary)', margin: '4px 0 0 0' }}>Version 2.0.0 (Web Edition)</p>
         </div>
       </div>
@@ -28,7 +28,7 @@ const About = () => {
         flex: 1
       }}>
         <p style={{ marginBottom: '16px', lineHeight: 1.6 }}>
-          Welcome to <strong>Alttre.s ios</strong>! This is a modern, web-based operating system created for the Hack Club WebOS 1 mission.
+          Welcome to <strong>alttre.os</strong>! This is a modern, web-based operating system created for the Hack Club WebOS 1 mission.
         </p>
         <p style={{ marginBottom: '16px', lineHeight: 1.6 }}>
           It features a premium glassmorphism design, a fully functional window manager with draggable and resizable windows, and custom applications like Devlogs and Live Weather.

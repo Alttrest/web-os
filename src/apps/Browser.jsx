@@ -15,13 +15,14 @@ const Browser = () => {
       if (!finalUrl.startsWith('http://') && !finalUrl.startsWith('https://')) {
         finalUrl = 'https://' + finalUrl;
       }
+      // Doğrudan URL'yi kullan (Proxy iptal edildi)
+      setUrl(finalUrl);
     } else {
       // It's a search query, redirect to Bing Search (Bing allows iframe embed usually)
       finalUrl = `https://www.bing.com/search?q=${encodeURIComponent(finalUrl)}`;
+      setUrl(finalUrl);
     }
     
-    setUrl(finalUrl);
-    setInputUrl(finalUrl);
     setLoading(true);
   };
 

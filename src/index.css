@@ -20,6 +20,10 @@
   --success: #10b981;
 }
 
+:root {
+  --primary: #00f0ff;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -41,11 +45,15 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(-45deg, #000000, #09090b, #0f172a, #000000);
-  background-size: 400% 400%;
-  animation: gradientBG 20s ease infinite;
+  background-color: #111111;
+  background-image: radial-gradient(circle at 50% -20%, #222222, #0a0a0a);
   z-index: 0;
+  display: flex;
+  align-items: center;
+  justifyContent: center;
 }
+
+
 
 @keyframes gradientBG {
   0% { background-position: 0% 50%; }

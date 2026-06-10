@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const BOOT_LOGS = [
-  "Initializing WebOS Kernel v2.0.0...",
+  "Initializing alttre.os Kernel v2.0.0...",
   "[ OK ] Mounted virtual filesystem",
   "[ OK ] Loading graphics drivers (Framer Motion)",
   "[ OK ] Starting Window Manager",
@@ -10,7 +10,7 @@ const BOOT_LOGS = [
   "[ OK ] Establishing connection to virtual network",
   "Mounting applications...",
   "Loading Calculator, Terminal, Notepad...",
-  "Loading 2048, Music Player, Paint...",
+  "Loading Music Player, Paint...",
   "Applying dark theme CSS variables...",
   "[ OK ] Desktop Environment Ready",
   "Starting user session..."
@@ -140,7 +140,7 @@ const BootScreen = ({ onBootComplete }) => {
                 boxShadow: 'inset 0 0 20px rgba(255,255,255,0.05), 0 0 40px rgba(59, 130, 246, 0.3)'
               }}>
                 <span style={{ fontSize: '36px', fontWeight: 800, background: 'linear-gradient(to right, #60a5fa, #c084fc)', WebkitBackgroundClip: 'text', color: 'transparent' }}>
-                  A.s
+                  a.os
                 </span>
               </div>
             </div>
@@ -154,7 +154,7 @@ const BootScreen = ({ onBootComplete }) => {
               WebkitBackgroundClip: 'text',
               color: 'transparent'
             }}>
-              ALTTRE.S IOS
+              alttre.os
             </h1>
 
             {/* macOS style sleek loading spinner/bar */}

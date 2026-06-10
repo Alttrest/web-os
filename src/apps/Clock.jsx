@@ -47,11 +47,11 @@ const Clock = () => {
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '24px' }}>
         {tab === 'clock' ? (
           <>
-            <div style={{ fontSize: '64px', fontWeight: 300, lineHeight: 1 }}>
-              {time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+            <div style={{ fontSize: '48px', fontWeight: 200, fontFamily: 'monospace', letterSpacing: '4px', textShadow: '0 0 20px var(--primary)' }}>
+              {time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
             </div>
-            <div style={{ fontSize: '18px', color: '#94a3b8', marginTop: '16px' }}>
-              {time.toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric' })}
+            <div style={{ fontSize: '18px', color: '#888', marginTop: '16px', letterSpacing: '2px' }}>
+              {time.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
             </div>
           </>
         ) : (
