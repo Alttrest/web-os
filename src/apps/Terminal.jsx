@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { getFS, getFolderByPath, readFile, writeFile, createFolder, deleteItem } from '../utils/vfs';
 
 const Terminal = ({ triggerFatalError }) => {
   const [history, setHistory] = useState([
@@ -6,6 +7,7 @@ const Terminal = ({ triggerFatalError }) => {
     { type: 'output', text: 'Type "help" to see available commands.' }
   ]);
   const [input, setInput] = useState('');
+  const [currentPath, setCurrentPath] = useState([]);
   const bottomRef = useRef(null);
 
   useEffect(() => {
@@ -16,21 +18,26 @@ const Terminal = ({ triggerFatalError }) => {
     e.preventDefault();
     if (!input.trim()) return;
 
-    const cmd = input.trim().toLowerCase();
+    const cmdLine = input.trim();
+    const args = cmdLine.split(' ');
+    const cmd = args[0].toLowerCase();
     
     // BSOD Easter Egg
-    if (cmd.includes('rm -rf') || cmd.includes('rm -r -f')) {
+    if (cmdLine.includes('rm -rf') || cmdLine.includes('rm -r -f')) {
       if (triggerFatalError) {
         triggerFatalError();
       }
       return;
     }
 
-    const newHistory = [...history, { type: 'input', text: `user@alttre.os ~$ ${input}` }];
+    const pathString = currentPath.length === 0 ? '~' : `~/${currentPath.join('/')}`;
+    const newHistory = [...history, { type: 'input', text: `user@alttre.os ${pathString}$ ${input}` }];
+
+    const fs = getFS();
 
     switch (cmd) {
       case 'help':
-        newHistory.push({ type: 'output', text: 'Commands: help, date, clear, echo [text], whoami, theme' });
+        newHistory.push({ type: 'output', text: 'Commands: help, date, clear, echo, whoami, ls, cd, mkdir, touch, rm, cat' });
         break;
       case 'date':
         newHistory.push({ type: 'output', text: new Date().toString() });
@@ -42,12 +49,83 @@ const Terminal = ({ triggerFatalError }) => {
       case 'whoami':
         newHistory.push({ type: 'output', text: 'zenith_admin' });
         break;
-      case 'theme':
-        newHistory.push({ type: 'output', text: 'Theme is controlled by System Settings.' });
+      case 'ls': {
+        const folder = getFolderByPath(fs, currentPath);
+        if (folder) {
+          const items = Object.keys(folder).map(key => {
+            return folder[key].type === 'folder' ? `<${key}>` : key;
+          }).join('  ');
+          newHistory.push({ type: 'output', text: items || '(empty directory)' });
+        } else {
+          newHistory.push({ type: 'output', text: 'ls: cannot access directory' });
+        }
         break;
+      }
+      case 'cd': {
+        const dir = args[1];
+        if (!dir || dir === '~') {
+          setCurrentPath([]);
+        } else if (dir === '..') {
+          if (currentPath.length > 0) {
+            setCurrentPath(currentPath.slice(0, -1));
+          }
+        } else {
+          const folder = getFolderByPath(fs, currentPath);
+          if (folder && folder[dir] && folder[dir].type === 'folder') {
+            setCurrentPath([...currentPath, dir]);
+          } else {
+            newHistory.push({ type: 'output', text: `cd: no such directory: ${dir}` });
+          }
+        }
+        break;
+      }
+      case 'mkdir': {
+        const dir = args[1];
+        if (dir) {
+          const success = createFolder(currentPath, dir);
+          if (!success) newHistory.push({ type: 'output', text: `mkdir: cannot create directory '${dir}'` });
+        } else {
+          newHistory.push({ type: 'output', text: 'mkdir: missing operand' });
+        }
+        break;
+      }
+      case 'touch': {
+        const file = args[1];
+        if (file) {
+          const success = writeFile(currentPath, file, '');
+          if (!success) newHistory.push({ type: 'output', text: `touch: cannot create file '${file}'` });
+        } else {
+          newHistory.push({ type: 'output', text: 'touch: missing operand' });
+        }
+        break;
+      }
+      case 'rm': {
+        const item = args[1];
+        if (item) {
+          const success = deleteItem(currentPath, item);
+          if (!success) newHistory.push({ type: 'output', text: `rm: cannot remove '${item}': No such file or directory` });
+        } else {
+          newHistory.push({ type: 'output', text: 'rm: missing operand' });
+        }
+        break;
+      }
+      case 'cat': {
+        const file = args[1];
+        if (file) {
+          const content = readFile(currentPath, file);
+          if (content !== null) {
+            newHistory.push({ type: 'output', text: content });
+          } else {
+            newHistory.push({ type: 'output', text: `cat: ${file}: No such file or directory` });
+          }
+        } else {
+          newHistory.push({ type: 'output', text: 'cat: missing operand' });
+        }
+        break;
+      }
       default:
-        if (cmd.startsWith('echo ')) {
-          newHistory.push({ type: 'output', text: input.substring(5) });
+        if (cmd === 'echo') {
+          newHistory.push({ type: 'output', text: args.slice(1).join(' ') });
         } else {
           newHistory.push({ type: 'output', text: `zsh: command not found: ${cmd}` });
         }
@@ -56,6 +134,8 @@ const Terminal = ({ triggerFatalError }) => {
     setHistory(newHistory);
     setInput('');
   };
+
+  const pathString = currentPath.length === 0 ? '~' : `~/${currentPath.join('/')}`;
 
   return (
     <div style={{ 
@@ -77,7 +157,7 @@ const Terminal = ({ triggerFatalError }) => {
       </div>
 
       {/* Terminal Content */}
-      <div style={{ flex: 1, padding: '16px 20px', overflowY: 'auto' }}>
+      <div style={{ flex: 1, padding: '16px 20px', overflowY: 'auto', whiteSpace: 'pre-wrap' }}>
         {history.map((line, i) => (
           <div key={i} style={{ 
             marginBottom: '6px', 
@@ -90,7 +170,7 @@ const Terminal = ({ triggerFatalError }) => {
         ))}
         
         <form onSubmit={handleCommand} style={{ display: 'flex', marginTop: '8px' }}>
-          <span style={{ marginRight: '12px', color: 'var(--primary)', fontWeight: 'bold' }}>user@alttre.os ~$</span>
+          <span style={{ marginRight: '12px', color: 'var(--primary)', fontWeight: 'bold', whiteSpace: 'nowrap' }}>user@alttre.os {pathString}$</span>
           <input
             type="text"
             value={input}

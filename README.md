@@ -1,80 +1,65 @@
-# alttre.os
+# alttre.os 🌌
 
-A premium, interactive, and highly customizable web-based operating system. Built as part of the Hack Club WebOS 1 mission, `alttre.os` pushes the boundaries of browser-based UIs with stunning glassmorphism, fluid animations, and a rich set of built-in applications.
+> A premium, interactive, and highly customizable web-based operating system built for the **Stardance** / Hack Club WebOS 1 mission.
 
 ![alttre.os Preview](https://via.placeholder.com/1200x600/050505/00f0ff?text=alttre.os)
 
-## ✨ Features
+## 📖 About The Project
 
-- **Immersive Setup Experience:** Personalize your OS right from the start. Choose your name, taskbar style, and cursor.
-- **Dynamic Wallpapers:** Choose between 3D interactive particle networks, colorful fluid simulations, a clean static gradient, or upload your own custom wallpaper.
-- **Custom Cursors:** Includes a highly requested *Interactive Ring* cursor that reacts to clicks, classic pointers, or the ability to upload a custom cursor image.
-- **Draggable Desktop Widgets:** Completely free-form widgets for Clock, Weather, System Hardware (Real Cores & RAM specs), and Quick Notes.
-- **Advanced Window Manager:** Fully draggable, resizable, and stackable windows powered by `framer-motion`.
-- **Taskbar Options:** Choose between a sleek macOS-style centered Dock or a classic Windows-style full-width taskbar.
-- **Easter Eggs:** Try running `rm -rf` in the Terminal to see the authentic `alttre.os` Blue Screen of Death (BSOD)!
+`alttre.os` pushes the boundaries of browser-based UIs. It's not just a collection of windows; it's an immersive experience featuring stunning glassmorphism, fluid animations, and a rich set of built-in applications. It was built with a core focus on **aesthetics and user experience**, avoiding generic UI patterns in favor of deep dark modes, vibrant neon accents, and micro-interactions.
 
-## 📱 Built-in Applications
-
-- **Terminal:** A functional simulated command-line interface.
-- **Browser:** Navigate the web directly inside your OS (Note: some modern sites may block iframe embedding natively).
-- **InstaClone:** A mock social media feed.
-- **Productivity Suite:** Calculator, Notepad, Calendar, and Clock.
-- **Settings:** Customize your OS settings, view hardware specs, and change your wallpaper on the fly.
-- **Games & Entertainment:** Tic Tac Toe, Memory Game, and a Music Player.
+### ✨ Features
+- **Immersive Setup Experience:** Personalize your OS right from the boot screen. Choose your username, taskbar style (macOS Dock vs. Windows Taskbar), and custom cursor.
+- **Dynamic Wallpapers:** 3D interactive particle networks, colorful fluid simulations, or upload your own background.
+- **Advanced Window Manager:** Fully draggable, resizable, and stackable windows powered by Framer Motion.
+- **Widgets:** Draggable desktop widgets for Clock, Weather, Hardware specs, and Notes.
+- **Core OS Architecture:**
+  - *Virtual File System (VFS):* A globally shared file system stored in `localStorage`. Create a file in one app, and it instantly appears in the others!
+  - *Synthesized Audio:* Procedurally generated startup and click sounds using the Web Audio API (zero external assets).
+- **Built-in Apps:** 
+  - *System & Files:* File Manager (Files), Terminal (integrated with VFS for `ls`, `mkdir`, `cat` etc.), Devlog Reader.
+  - *Productivity:* Browser, Calculator, Notepad, Calendar.
+  - *Media & Camera:* Photo Booth (saves directly to VFS), Music Player, YouTube WebWrapper.
+  - *Social:* InstaClone (Mock feed).
+  - *Games:* Game Center (includes Snake, Tic Tac Toe, Memory, Dice & Coin).
+- **Easter Eggs:** Try running `rm -rf` in the Terminal for a surprise!
 
 ## 🛠️ Tech Stack
-
-- **Framework:** React 18
-- **Build Tool:** Vite
+- **Framework:** React 18 + Vite
 - **Animations:** Framer Motion
-- **Styling:** Vanilla CSS (Tailored Glassmorphism & Dark Mode)
+- **Styling:** Vanilla CSS (Glassmorphism & Tailored Dark Mode)
 - **Icons:** Lucide React
 
-## 🚀 Getting Started
+## 🚀 How to Run Locally
 
-### Prerequisites
+You can run `alttre.os` directly on your local machine. 
 
-Ensure you have [Node.js](https://nodejs.org/) installed on your machine.
-
-### Installation
-
-1. Clone the repository:
+1. **Clone the repository:**
    ```bash
    git clone https://github.com/yourusername/alttre.os.git
    cd alttre.os
    ```
 
-2. Install dependencies:
+2. **Install dependencies:**
    ```bash
    npm install
    ```
 
-3. Start the development server:
+3. **Start the development server:**
    ```bash
    npm run dev
    ```
 
-4. Open your browser and navigate to `http://localhost:5173`.
+4. **View the project:**
+   Open your browser and navigate to the localhost link (usually `http://localhost:5173`).
 
-### Building for Production
+## 📓 Devlog
 
-To create a production-ready build:
-
-```bash
-npm run build
-```
-
-The optimized files will be generated in the `dist` folder, ready to be deployed to Vercel, Netlify, GitHub Pages, or any static hosting service.
-
-## 🎨 Design Philosophy
-
-`alttre.os` was built with a core focus on **aesthetics and user experience**. It avoids generic UI patterns in favor of:
-- Deep, tailored dark modes (`#050505` backgrounds).
-- Vibrant, neon accent colors (`#00f0ff`, `#ff00ff`).
-- Smooth micro-interactions on every hover and click.
-- Blurry, translucent backgrounds (Glassmorphism) to create depth.
+*(Stardance gereksinimi: Geliştirme sürecinizi buraya ekleyebilirsiniz)*
+- **[Tarih] - Başlangıç:** Proje iskeleti ve Vite + React kurulumu yapıldı.
+- **[Tarih] - Pencere Yöneticisi:** Framer Motion kullanılarak sürüklenebilir pencere sistemi entegre edildi.
+- **[Tarih] - Uygulamalar:** Terminal, Yılan Oyunu ve InstaClone gibi temel uygulamalar eklendi.
+- **[Tarih] - Dev Güncelleme:** Sanal Dosya Sistemi (VFS) kuruldu! Dosya yöneticisi, çalışan Terminal komutları (ls, cd, touch), web kamerasından fotoğraf çeken Kamera uygulaması ve işletim sisteminin içinden yazılabilen Devlog uygulaması eklendi. Ses sentezleyici ile tıklama sesleri oluşturuldu.
 
 ## 📄 License
-
 This project is open-source and available under the [MIT License](LICENSE).

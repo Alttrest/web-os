@@ -11,7 +11,7 @@ const Taskbar = ({ windows, activeWindowId, taskbarStyle, onWindowClick, openApp
     return () => clearInterval(timer);
   }, []);
 
-  const dockApps = ['calculator', 'calendar', 'tictactoe', 'settings', 'browser'];
+  const dockApps = ['calculator', 'calendar', 'gamecenter', 'settings', 'browser'];
   const isDock = taskbarStyle === 'dock';
 
   const renderAppDrawerMenu = (bottomOffset = false) => (

@@ -3,7 +3,7 @@ import {
   Info, Cloud, Globe, Gamepad2, 
   Calculator as CalcIcon, Terminal as TerminalIcon, FileText, 
   Calendar as CalendarIcon, Clock as ClockIcon, Grid, 
-  Music, Palette, Settings as SettingsIcon, Dices, PlaySquare, Camera, Headphones
+  Music, Palette, Settings as SettingsIcon, Dices, PlaySquare, Camera, Headphones, Folder, Box, Code, Cuboid
 } from 'lucide-react';
 import Window from './components/Window';
 import Taskbar from './components/Taskbar';
@@ -17,13 +17,12 @@ import ParticlesWallpaper from './components/ParticlesWallpaper';
 import Widgets from './components/Widgets';
 import CursorEffects from './components/CursorEffects';
 import { AnimatePresence, motion } from 'framer-motion';
+import { playBootSound, playClickSound } from './utils/audio';
 
 // Apps
 import About from './apps/About';
 import Weather from './apps/Weather';
 import Browser from './apps/Browser';
-import TicTacToe from './apps/TicTacToe';
-import Memory from './apps/Memory';
 import Calculator from './apps/Calculator';
 import Terminal from './apps/Terminal';
 import Notepad from './apps/Notepad';
@@ -32,9 +31,16 @@ import Clock from './apps/Clock';
 import MusicPlayer from './apps/MusicPlayer';
 import Paint from './apps/Paint';
 import Settings from './apps/Settings';
-import RNG from './apps/RNG';
 import WebWrapper from './apps/WebWrapper';
 import InstaClone from './apps/InstaClone';
+import FileManager from './apps/FileManager';
+import CameraApp from './apps/CameraApp';
+import DevlogApp from './apps/DevlogApp';
+import GameCenter from './apps/GameCenter';
+import PdfApp from './apps/PdfApp';
+import StlViewerApp from './apps/StlViewerApp';
+import PythonIDE from './apps/PythonIDE';
+import ThreeDEditor from './apps/ThreeDEditor';
 
 // Desktop Clock Component (Analog)
 const DesktopClock = () => {
@@ -120,6 +126,11 @@ const APPS = {
     icon: <TerminalIcon size={16} />, desktopIcon: <TerminalIcon size={24} />,
     component: <Terminal />, defaultWidth: 600, defaultHeight: 400
   },
+  files: {
+    id: 'files', title: 'Files',
+    icon: <Folder size={16} />, desktopIcon: <Folder size={24} />,
+    component: <FileManager />, defaultWidth: 700, defaultHeight: 500
+  },
   notepad: {
     id: 'notepad', title: 'Notepad',
     icon: <FileText size={16} />, desktopIcon: <FileText size={24} />,
@@ -135,15 +146,10 @@ const APPS = {
     icon: <ClockIcon size={16} />, desktopIcon: <ClockIcon size={24} />,
     component: <Clock />, defaultWidth: 350, defaultHeight: 300
   },
-  tictactoe: {
-    id: 'tictactoe', title: 'Tic Tac Toe',
+  gamecenter: {
+    id: 'gamecenter', title: 'Game Center',
     icon: <Gamepad2 size={16} />, desktopIcon: <Gamepad2 size={24} />,
-    component: <TicTacToe />, defaultWidth: 350, defaultHeight: 450
-  },
-  memory: {
-    id: 'memory', title: 'Memory Game',
-    icon: <Gamepad2 size={16} />, desktopIcon: <Gamepad2 size={24} />,
-    component: <Memory />, defaultWidth: 400, defaultHeight: 500
+    component: <GameCenter />, defaultWidth: 600, defaultHeight: 500
   },
   music: {
     id: 'music', title: 'Lofi Player',
@@ -154,11 +160,6 @@ const APPS = {
     id: 'paint', title: 'Paint',
     icon: <Palette size={16} />, desktopIcon: <Palette size={24} />,
     component: <Paint />, defaultWidth: 600, defaultHeight: 500
-  },
-  rng: {
-    id: 'rng', title: 'Dice & Coin',
-    icon: <Dices size={16} />, desktopIcon: <Dices size={24} />,
-    component: <RNG />, defaultWidth: 500, defaultHeight: 300
   },
   settings: {
     id: 'settings', title: 'Settings',
@@ -184,6 +185,36 @@ const APPS = {
     id: 'instagram', title: 'Instagram',
     icon: <Camera size={16} />, desktopIcon: <Camera size={24} />,
     component: <InstaClone />, defaultWidth: 450, defaultHeight: 700
+  },
+  camera: {
+    id: 'camera', title: 'Photo Booth',
+    icon: <Camera size={16} />, desktopIcon: <Camera size={24} />,
+    component: <CameraApp />, defaultWidth: 500, defaultHeight: 600
+  },
+  devlog: {
+    id: 'devlog', title: 'Stardance Devlog',
+    icon: <FileText size={16} />, desktopIcon: <FileText size={24} />,
+    component: <DevlogApp />, defaultWidth: 600, defaultHeight: 500
+  },
+  pdf: {
+    id: 'pdf', title: 'PDF Editor',
+    icon: <FileText size={16} />, desktopIcon: <FileText size={24} />,
+    component: <PdfApp />, defaultWidth: 800, defaultHeight: 600
+  },
+  stl: {
+    id: 'stl', title: '3D Viewer',
+    icon: <Box size={16} />, desktopIcon: <Box size={24} />,
+    component: <StlViewerApp />, defaultWidth: 700, defaultHeight: 500
+  },
+  python: {
+    id: 'python', title: 'Python IDE',
+    icon: <Code size={16} />, desktopIcon: <Code size={24} />,
+    component: <PythonIDE />, defaultWidth: 800, defaultHeight: 600
+  },
+  studio: {
+    id: 'studio', title: '3D Studio',
+    icon: <Cuboid size={16} />, desktopIcon: <Cuboid size={24} />,
+    component: <ThreeDEditor />, defaultWidth: 900, defaultHeight: 600
   }
 };
 
@@ -220,10 +251,12 @@ function App() {
   useEffect(() => {
     if (!isBooting && isSetupComplete && !isWelcoming) {
       openApp('about');
+      playBootSound();
     }
   }, [isBooting, isSetupComplete, isWelcoming]);
 
   const openApp = (appId) => {
+    playClickSound();
     const appInfo = APPS[appId];
     if (!appInfo) return;
 
@@ -370,9 +403,10 @@ function App() {
                 <Window
                   window={window}
                   isActive={activeWindowId === window.id}
+                  taskbarStyle={taskbarStyle}
                   onClose={closeWindow}
                   onMinimize={toggleMinimize}
-                  toggleMaximize={() => toggleMaximize(window.id)}
+                  onMaximize={() => toggleMaximize(window.id)}
                   onFocus={() => focusWindow(window.id)}
                 >
                   {React.cloneElement(appInfo.component, { triggerFatalError: () => setHasFatalError(true) })}
@@ -389,6 +423,7 @@ function App() {
         activeWindowId={activeWindowId} 
         taskbarStyle={taskbarStyle}
         onWindowClick={(id) => {
+          playClickSound();
           const win = windows.find(w => w.id === id);
           if (win.isMinimized) {
             toggleMinimize(id);
