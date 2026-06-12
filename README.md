@@ -2,7 +2,9 @@
 
 > A premium, interactive, and highly customizable web-based operating system built for the **Stardance** / Hack Club WebOS 1 mission.
 
-![alttre.os Preview](https://alttre-os.vercel.app/)
+🔗 **Live Demo:** [alttre-os.vercel.app](https://alttre-os.vercel.app/)
+
+![alttre.os Preview](https://via.placeholder.com/1200x600/050505/00f0ff?text=alttre.os)
 
 ## 📖 About The Project
 
