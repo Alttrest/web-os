@@ -20,8 +20,10 @@ const DockPreview = () => {
       style={{
         position: 'absolute',
         bottom: '36px',
-        left: '50%',
-        transform: 'translateX(-50%)',
+        left: 0,
+        right: 0,
+        margin: '0 auto',
+        width: 'fit-content',
         display: 'flex',
         alignItems: 'center',
         gap: '20px',
