@@ -43,4 +43,3 @@ npm install
 # Geliştirme sunucusunu başlat
 npm run dev
 
-Licensed under the MIT License.
