@@ -62,7 +62,7 @@ const SetupScreen = ({ onComplete }) => {
       exit={{ opacity: 0, filter: 'blur(10px)' }}
       transition={{ duration: 0.8, ease: "easeInOut" }}
       style={{
-        position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh',
+        position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
         backgroundColor: '#050505',
         display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
         zIndex: 9999, color: 'white' // removed static cursor: 'default' so body cursor applies
@@ -89,6 +89,15 @@ const SetupScreen = ({ onComplete }) => {
           }} />
         ))}
       </div>
+
+      <button 
+        onClick={() => onComplete({ name: 'Guest', wallpaper: 'particles', taskbar: 'dock', cursor: 'default' })}
+        style={{ position: 'absolute', top: '34px', right: '40px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: '#ccc', padding: '8px 16px', borderRadius: '8px', cursor: 'pointer', zIndex: 10, fontSize: '14px', transition: 'all 0.2s' }}
+        onMouseOver={(e) => e.target.style.background = 'rgba(255,255,255,0.2)'}
+        onMouseOut={(e) => e.target.style.background = 'rgba(255,255,255,0.1)'}
+      >
+        Skip Setup
+      </button>
 
       <AnimatePresence mode="wait">
         {step === 1 && (
@@ -218,7 +227,7 @@ const SetupScreen = ({ onComplete }) => {
           <motion.div
             initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 100, opacity: 0 }}
             style={{
-              position: 'absolute', bottom: '24px', left: '50%', transform: 'translateX(-50%)',
+              position: 'absolute', bottom: '40px', left: '50%', transform: 'translateX(-50%)',
               display: 'flex', alignItems: 'center', gap: '24px', padding: '12px 32px',
               backgroundColor: 'rgba(20, 20, 25, 0.6)', backdropFilter: 'blur(10px)',
               borderRadius: '30px', border: '1px solid rgba(255,255,255,0.05)', zIndex: 3, pointerEvents: 'none'
@@ -234,9 +243,9 @@ const SetupScreen = ({ onComplete }) => {
           <motion.div
             initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 100, opacity: 0 }}
             style={{
-              position: 'absolute', bottom: 0, left: 0, right: 0, height: '52px',
+              position: 'absolute', bottom: '8px', left: '8px', right: '8px', height: '52px',
               backgroundColor: 'rgba(15, 15, 20, 0.85)', backdropFilter: 'blur(15px)',
-              borderTop: '1px solid rgba(255,255,255,0.05)', display: 'flex',
+              border: '1px solid rgba(255,255,255,0.05)', borderRadius: '8px', display: 'flex',
               justifyContent: 'space-between', alignItems: 'center', padding: '0 16px', zIndex: 3, pointerEvents: 'none'
             }}
           >

@@ -100,7 +100,7 @@ const Taskbar = ({ windows, activeWindowId, taskbarStyle, onWindowClick, openApp
         <>
           {/* Top Bar - macOS / ZenithOS Style */}
           <div style={{
-            position: 'fixed', top: 0, left: 0, right: 0, height: '48px',
+            position: 'absolute', top: 0, left: 0, right: 0, height: '48px',
             display: 'flex', justifyContent: 'space-between', alignItems: 'center',
             padding: '0 24px', color: '#e5e5e5', zIndex: 999,
           }}>
@@ -120,7 +120,7 @@ const Taskbar = ({ windows, activeWindowId, taskbarStyle, onWindowClick, openApp
 
           {/* Minimalist Dock - Pill Shape */}
           <div style={{
-            position: 'fixed', bottom: '24px', left: '50%', transform: 'translateX(-50%)',
+            position: 'absolute', bottom: '24px', left: '50%', transform: 'translateX(-50%)',
             display: 'flex', alignItems: 'center', gap: '24px', padding: '12px 32px',
             backgroundColor: 'rgba(20, 20, 25, 0.6)', backdropFilter: 'blur(10px)',
             borderRadius: '30px', border: '1px solid rgba(255,255,255,0.05)', zIndex: 1000
@@ -149,7 +149,7 @@ const Taskbar = ({ windows, activeWindowId, taskbarStyle, onWindowClick, openApp
       ) : (
         /* Classic Taskbar - Windows Style */
         <div style={{
-          position: 'fixed', bottom: 0, left: 0, right: 0, height: '52px',
+          position: 'absolute', bottom: 0, left: 0, right: 0, height: '52px',
           backgroundColor: 'rgba(15, 15, 20, 0.85)', backdropFilter: 'blur(15px)',
           borderTop: '1px solid rgba(255,255,255,0.05)', display: 'flex',
           justifyContent: 'space-between', alignItems: 'center', padding: '0 16px',
