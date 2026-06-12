@@ -173,12 +173,12 @@ const SetupScreen = ({ onComplete }) => {
             
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', width: '100%' }}>
               <SelectionCard 
-                title="Classic (Windows)" desc="Full width bottom bar"
+                title="Classic" desc="Full width bottom bar"
                 active={config.taskbar === 'classic'} 
                 onClick={() => setConfig({ ...config, taskbar: 'classic' })} 
               />
               <SelectionCard 
-                title="Dock (macOS)" desc="Centered floating capsule"
+                title="Dock" desc="Centered floating capsule"
                 active={config.taskbar === 'dock'} 
                 onClick={() => setConfig({ ...config, taskbar: 'dock' })} 
               />
