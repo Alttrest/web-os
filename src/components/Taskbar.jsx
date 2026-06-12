@@ -120,7 +120,7 @@ const Taskbar = ({ windows, activeWindowId, taskbarStyle, onWindowClick, openApp
 
           {/* Minimalist Dock - Pill Shape */}
           <div style={{
-            position: 'absolute', bottom: '24px', left: '50%', transform: 'translateX(-50%)',
+            position: 'absolute', bottom: '24px', left: 0, right: 0, margin: '0 auto', width: 'fit-content',
             display: 'flex', alignItems: 'center', gap: '24px', padding: '12px 32px',
             backgroundColor: 'rgba(20, 20, 25, 0.6)', backdropFilter: 'blur(10px)',
             borderRadius: '30px', border: '1px solid rgba(255,255,255,0.05)', zIndex: 1000

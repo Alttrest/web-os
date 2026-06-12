@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import FluidWallpaper from './FluidWallpaper';
 import ParticlesWallpaper from './ParticlesWallpaper';
+import DockPreview from './DockPreview';
+import TaskbarPreview from './TaskbarPreview';
 
 const SetupScreen = ({ onComplete }) => {
   const [step, setStep] = useState(1);
@@ -171,12 +173,12 @@ const SetupScreen = ({ onComplete }) => {
             
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', width: '100%' }}>
               <SelectionCard 
-                title="Classic (Windows)" desc="Full width bottom bar"
+                title="Classic" desc="Full width bottom bar"
                 active={config.taskbar === 'classic'} 
                 onClick={() => setConfig({ ...config, taskbar: 'classic' })} 
               />
               <SelectionCard 
-                title="Dock (macOS)" desc="Centered floating capsule"
+                title="Dock" desc="Centered floating capsule"
                 active={config.taskbar === 'dock'} 
                 onClick={() => setConfig({ ...config, taskbar: 'dock' })} 
               />
@@ -223,43 +225,8 @@ const SetupScreen = ({ onComplete }) => {
 
       {/* Live Preview for Taskbar/Dock */}
       <AnimatePresence>
-        {step >= 3 && config.taskbar === 'dock' && (
-          <motion.div
-            initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 100, opacity: 0 }}
-            style={{
-              position: 'absolute', bottom: '40px', left: '50%', transform: 'translateX(-50%)',
-              display: 'flex', alignItems: 'center', gap: '24px', padding: '12px 32px',
-              backgroundColor: 'rgba(20, 20, 25, 0.6)', backdropFilter: 'blur(10px)',
-              borderRadius: '30px', border: '1px solid rgba(255,255,255,0.05)', zIndex: 3, pointerEvents: 'none'
-            }}
-          >
-            {[1,2,3,4,5].map(i => (
-              <div key={i} style={{ width: '24px', height: '24px', borderRadius: '4px', backgroundColor: 'rgba(255,255,255,0.2)' }} />
-            ))}
-          </motion.div>
-        )}
-        
-        {step >= 3 && config.taskbar === 'classic' && (
-          <motion.div
-            initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 100, opacity: 0 }}
-            style={{
-              position: 'absolute', bottom: '8px', left: '8px', right: '8px', height: '52px',
-              backgroundColor: 'rgba(15, 15, 20, 0.85)', backdropFilter: 'blur(15px)',
-              border: '1px solid rgba(255,255,255,0.05)', borderRadius: '8px', display: 'flex',
-              justifyContent: 'space-between', alignItems: 'center', padding: '0 16px', zIndex: 3, pointerEvents: 'none'
-            }}
-          >
-            <div style={{ display: 'flex', gap: '8px' }}>
-              <div style={{ width: '32px', height: '32px', borderRadius: '4px', backgroundColor: 'var(--primary, #00f0ff)', opacity: 0.8 }} />
-              <div style={{ width: '32px', height: '32px', borderRadius: '4px', backgroundColor: 'rgba(255,255,255,0.2)' }} />
-              <div style={{ width: '32px', height: '32px', borderRadius: '4px', backgroundColor: 'rgba(255,255,255,0.2)' }} />
-            </div>
-            <div style={{ display: 'flex', gap: '8px' }}>
-              <div style={{ width: '16px', height: '16px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.3)' }} />
-              <div style={{ width: '16px', height: '16px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.3)' }} />
-            </div>
-          </motion.div>
-        )}
+        {step >= 3 && config.taskbar === 'dock' && <DockPreview />}
+        {step >= 3 && config.taskbar === 'classic' && <TaskbarPreview />}
       </AnimatePresence>
     </motion.div>
   );
