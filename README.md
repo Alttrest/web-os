@@ -1,65 +1,47 @@
-# alttre.os 🌌
+# alttre.os
 
-> A premium, interactive, and highly customizable web-based operating system built for the **Stardance** / Hack Club WebOS 1 mission.
+**Liquid Glass | Cyberpunk | Immersive OS**
 
-![alttre.os Preview](https://via.placeholder.com/1200x600/050505/00f0ff?text=alttre.os)
+alttre.os is a browser-based operating system that pushes the boundaries of modern web technologies. Steering clear of standard interface patterns, it is designed with deep dark modes, neon accents, and fluid micro-interactions.
 
-## 📖 About The Project
+[Live Demo](#) | [Hack Club WebOS 1 Mission](#)
 
-`alttre.os` pushes the boundaries of browser-based UIs. It's not just a collection of windows; it's an immersive experience featuring stunning glassmorphism, fluid animations, and a rich set of built-in applications. It was built with a core focus on **aesthetics and user experience**, avoiding generic UI patterns in favor of deep dark modes, vibrant neon accents, and micro-interactions.
+## Core Features
 
-### ✨ Features
-- **Immersive Setup Experience:** Personalize your OS right from the boot screen. Choose your username, taskbar style (macOS Dock vs. Windows Taskbar), and custom cursor.
-- **Dynamic Wallpapers:** 3D interactive particle networks, colorful fluid simulations, or upload your own background.
-- **Advanced Window Manager:** Fully draggable, resizable, and stackable windows powered by Framer Motion.
-- **Widgets:** Draggable desktop widgets for Clock, Weather, Hardware specs, and Notes.
-- **Core OS Architecture:**
-  - *Virtual File System (VFS):* A globally shared file system stored in `localStorage`. Create a file in one app, and it instantly appears in the others!
-  - *Synthesized Audio:* Procedurally generated startup and click sounds using the Web Audio API (zero external assets).
-- **Built-in Apps:** 
-  - *System & Files:* File Manager (Files), Terminal (integrated with VFS for `ls`, `mkdir`, `cat` etc.), Devlog Reader.
-  - *Productivity:* Browser, Calculator, Notepad, Calendar.
-  - *Media & Camera:* Photo Booth (saves directly to VFS), Music Player, YouTube WebWrapper.
-  - *Social:* InstaClone (Mock feed).
-  - *Games:* Game Center (includes Snake, Tic Tac Toe, Memory, Dice & Coin).
-- **Easter Eggs:** Try running `rm -rf` in the Terminal for a surprise!
+- **Immersive Boot:** A customizable user experience right from the first startup.
+- **Fluid UI:** Dynamic window management powered by Framer Motion, with a strong focus on glassmorphism.
+- **Virtual File System (VFS):** A globally shared file system running on localStorage that provides data synchronization across applications.
+- **Audio Synthesis:** Procedurally generated sound effects using the Web Audio API without any external resources.
+- **Deep Customization:** 3D interactive backgrounds, custom cursors, and modular taskbar designs.
 
-## 🛠️ Tech Stack
-- **Framework:** React 18 + Vite
-- **Animations:** Framer Motion
-- **Styling:** Vanilla CSS (Glassmorphism & Tailored Dark Mode)
-- **Icons:** Lucide React
+## The Tech Stack
 
-## 🚀 How to Run Locally
+| Component | Technology |
+| :--- | :--- |
+| Engine | React 18 + Vite |
+| Motion | Framer Motion |
+| Styling | Custom Vanilla CSS (Glassmorphism) |
+| Icons | Lucide React |
 
-You can run `alttre.os` directly on your local machine. 
+## Development Log
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/Alttrest/web-os.git
-   cd web-os
-   ```
+- **[10.06.2026] – Genesis:** Established project architecture, Vite/React configuration, and implemented the window management system with Framer Motion.
+- **[11.06.2026] – Core Update:** Integrated VFS (Virtual File System). Included Terminal (ls, mkdir, cat), Camera, Devlog, and Procedural Audio Synthesizer into the system.
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+## Local Deployment
 
-3. **Start the development server:**
-   ```bash
-   npm run dev
-   ```
+Clone the repository:
+```bash
+git clone https://github.com/Alttrest/web-os.git
+cd web-os
+```
 
-4. **View the project:**
-   Open your browser and navigate to the localhost link (usually `http://localhost:5173`).
+Install dependencies:
+```bash
+npm install
+```
 
-## 📓 Devlog
-
-*(Stardance requirement: You can add your development process here)*
-- **[Date] - Getting Started:** Project skeleton and Vite + React setup completed.
-- **[Date] - Window Manager:** Integrated draggable window system using Framer Motion.
-- **[Date] - Applications:** Basic apps like Terminal, Snake Game, and InstaClone were added.
-- **[Date] - Giant Update:** Virtual File System (VFS) was established! Added a file manager, working Terminal commands (ls, cd, touch), Camera app taking photos from webcam, and a Devlog app writable from within the OS. Synthesizer-based click sounds were created.
-
-## 📄 License
-This project is open-source and available under the [MIT License](LICENSE).
+Start the development server:
+```bash
+npm run dev
+```
