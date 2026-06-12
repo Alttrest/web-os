@@ -1,67 +1,46 @@
-# alttre.os 🌌
+🌌 alttre.os
 
-> A premium, interactive, and highly customizable web-based operating system built for the **Stardance** / Hack Club WebOS 1 mission.
+    Liquid Glass | Cyberpunk | Immersive OS
 
-🔗 **Live Demo:** [alttre-os.vercel.app](https://alttre-os.vercel.app/)
+alttre.os modern web teknolojilerinin sınırlarını zorlayan, browser tabanlı bir işletim sistemidir. Standart arayüz kalıplarından uzak; derin karanlık modlar, neon vurgular ve akışkan mikro-etkileşimlerle tasarlanmıştır.
 
-![alttre.os Preview](https://via.placeholder.com/1200x600/050505/00f0ff?text=alttre.os)
+🔗 Live Demo | 🛠️ Hack Club WebOS 1 Mission
 
-## 📖 About The Project
+✨ Core Features
 
-`alttre.os` pushes the boundaries of browser-based UIs. It's not just a collection of windows; it's an immersive experience featuring stunning glassmorphism, fluid animations, and a rich set of built-in applications. It was built with a core focus on **aesthetics and user experience**, avoiding generic UI patterns in favor of deep dark modes, vibrant neon accents, and micro-interactions.
+    Immersive Boot: İlk açılıştan itibaren kişiselleştirilebilir kullanıcı deneyimi.
 
-### ✨ Features
-- **Immersive Setup Experience:** Personalize your OS right from the boot screen. Choose your username, taskbar style (macOS Dock vs. Windows Taskbar), and custom cursor.
-- **Dynamic Wallpapers:** 3D interactive particle networks, colorful fluid simulations, or upload your own background.
-- **Advanced Window Manager:** Fully draggable, resizable, and stackable windows powered by Framer Motion.
-- **Widgets:** Draggable desktop widgets for Clock, Weather, Hardware specs, and Notes.
-- **Core OS Architecture:**
-  - *Virtual File System (VFS):* A globally shared file system stored in `localStorage`. Create a file in one app, and it instantly appears in the others!
-  - *Synthesized Audio:* Procedurally generated startup and click sounds using the Web Audio API (zero external assets).
-- **Built-in Apps:** 
-  - *System & Files:* File Manager (Files), Terminal (integrated with VFS for `ls`, `mkdir`, `cat` etc.), Devlog Reader.
-  - *Productivity:* Browser, Calculator, Notepad, Calendar.
-  - *Media & Camera:* Photo Booth (saves directly to VFS), Music Player, YouTube WebWrapper.
-  - *Social:* InstaClone (Mock feed).
-  - *Games:* Game Center (includes Snake, Tic Tac Toe, Memory, Dice & Coin).
-- **Easter Eggs:** Try running `rm -rf` in the Terminal for a surprise!
+    Fluid UI: Framer Motion ile güçlendirilmiş, cam efekti (glassmorphism) odaklı dinamik pencere yönetimi.
 
-## 🛠️ Tech Stack
-- **Framework:** React 18 + Vite
-- **Animations:** Framer Motion
-- **Styling:** Vanilla CSS (Glassmorphism & Tailored Dark Mode)
-- **Icons:** Lucide React
+    Virtual File System (VFS): localStorage üzerinde çalışan, uygulamalar arası veri senkronizasyonu sağlayan global dosya sistemi.
 
-## 🚀 How to Run Locally
+    Audio Synthesis: Web Audio API ile dış kaynak kullanmadan üretilen procedural ses efektleri.
 
-You can run `alttre.os` directly on your local machine. 
+    Deep Customization: 3D interaktif arka planlar, özel imleçler ve modüler taskbar tasarımları.
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/Alttrest/web-os.git
-   cd web-os
-   ```
+🛠️ The Tech Stack
+Component	Technology
+Engine	React 18 + Vite
+Motion	Framer Motion
+Styling	Custom Vanilla CSS (Glassmorphism)
+Icons	Lucide React
+📓 Development Log
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+    [10.06.2026] – Genesis: Proje mimarisinin kurulması, Vite/React yapılandırması ve Framer Motion ile pencere yönetimi sisteminin hayata geçirilmesi.
 
-3. **Start the development server:**
-   ```bash
-   npm run dev
-   ```
+    [11.06.2026] – Core Update: VFS (Sanal Dosya Sistemi) entegrasyonu. Terminal (ls, mkdir, cat), Kamera, Devlog ve Procedural Ses Sentezleyicinin sisteme dahil edilmesi.
 
-4. **View the project:**
-   Open your browser and navigate to the localhost link (usually `http://localhost:5173`).
+🚀 Local Deployment
+Bash
 
-## 📓 Devlog
+# Repo'yu klonla
+git clone https://github.com/Alttrest/web-os.git
+cd web-os
 
-*(Stardance gereksinimi: Geliştirme sürecinizi buraya ekleyebilirsiniz)*
-- **[Tarih] - Başlangıç:** Proje iskeleti ve Vite + React kurulumu yapıldı.
-- **[Tarih] - Pencere Yöneticisi:** Framer Motion kullanılarak sürüklenebilir pencere sistemi entegre edildi.
-- **[Tarih] - Uygulamalar:** Terminal, Yılan Oyunu ve InstaClone gibi temel uygulamalar eklendi.
-- **[Tarih] - Dev Güncelleme:** Sanal Dosya Sistemi (VFS) kuruldu! Dosya yöneticisi, çalışan Terminal komutları (ls, cd, touch), web kamerasından fotoğraf çeken Kamera uygulaması ve işletim sisteminin içinden yazılabilen Devlog uygulaması eklendi. Ses sentezleyici ile tıklama sesleri oluşturuldu.
+# Bağımlılıkları kur
+npm install
 
-## 📄 License
-This project is open-source and available under the [MIT License](LICENSE).
+# Geliştirme sunucusunu başlat
+npm run dev
+
+Licensed under the MIT License.
