@@ -22,6 +22,7 @@ const Settings = () => {
   };
 
   const changeWallpaper = (type) => {
+    window.dispatchEvent(new CustomEvent('changeWallpaper', { detail: type }));
     const bg = document.querySelector('.desktop-bg');
     if (!bg) return;
     

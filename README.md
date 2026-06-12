@@ -55,11 +55,11 @@ You can run `alttre.os` directly on your local machine.
 
 ## 📓 Devlog
 
-*(Stardance gereksinimi: Geliştirme sürecinizi buraya ekleyebilirsiniz)*
-- **[Tarih] - Başlangıç:** Proje iskeleti ve Vite + React kurulumu yapıldı.
-- **[Tarih] - Pencere Yöneticisi:** Framer Motion kullanılarak sürüklenebilir pencere sistemi entegre edildi.
-- **[Tarih] - Uygulamalar:** Terminal, Yılan Oyunu ve InstaClone gibi temel uygulamalar eklendi.
-- **[Tarih] - Dev Güncelleme:** Sanal Dosya Sistemi (VFS) kuruldu! Dosya yöneticisi, çalışan Terminal komutları (ls, cd, touch), web kamerasından fotoğraf çeken Kamera uygulaması ve işletim sisteminin içinden yazılabilen Devlog uygulaması eklendi. Ses sentezleyici ile tıklama sesleri oluşturuldu.
+*(Stardance requirement: You can add your development process here)*
+- **[Date] - Getting Started:** Project skeleton and Vite + React setup completed.
+- **[Date] - Window Manager:** Integrated draggable window system using Framer Motion.
+- **[Date] - Applications:** Basic apps like Terminal, Snake Game, and InstaClone were added.
+- **[Date] - Giant Update:** Virtual File System (VFS) was established! Added a file manager, working Terminal commands (ls, cd, touch), Camera app taking photos from webcam, and a Devlog app writable from within the OS. Synthesizer-based click sounds were created.
 
 ## 📄 License
 This project is open-source and available under the [MIT License](LICENSE).

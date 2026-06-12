@@ -105,3 +105,8 @@ body {
 .markdown-content p { margin-bottom: 0.75rem; line-height: 1.5; color: var(--text-secondary); }
 .markdown-content ul { margin-left: 1.5rem; margin-bottom: 1rem; color: var(--text-secondary); }
 .markdown-content li { margin-bottom: 0.25rem; }
+
+/* Window Maximization Fix */
+.maximized-window {
+  transform: none !important;
+}

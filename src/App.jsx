@@ -174,7 +174,7 @@ const APPS = {
   youtube: {
     id: 'youtube', title: 'YouTube',
     icon: <PlaySquare size={16} />, desktopIcon: <PlaySquare size={24} />,
-    component: <WebWrapper url="https://www.youtube.com/embed/" title="YouTube" />, defaultWidth: 800, defaultHeight: 500
+    component: <WebWrapper url="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube" />, defaultWidth: 800, defaultHeight: 500
   },
   ytmusic: {
     id: 'ytmusic', title: 'YT Music',
@@ -246,6 +246,15 @@ function App() {
       document.body.style.cursor = cursorStyle;
     }
   }, [cursorStyle, customCursor]);
+
+  // Listen for Settings changes
+  useEffect(() => {
+    const handleSettingsChange = (e) => {
+      setWallpaperType(e.detail);
+    };
+    window.addEventListener('changeWallpaper', handleSettingsChange);
+    return () => window.removeEventListener('changeWallpaper', handleSettingsChange);
+  }, []);
 
   // Open the About app by default when desktop loads
   useEffect(() => {

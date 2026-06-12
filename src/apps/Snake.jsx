@@ -39,35 +39,30 @@ const Snake = () => {
     setFood(generateFood(INITIAL_SNAKE));
   };
 
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      // Prevent default scrolling for arrow keys
-      if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
-        e.preventDefault();
+  const handleKeyDown = (e) => {
+    // Prevent default scrolling for arrow keys
+    if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+      e.preventDefault();
+    }
+
+    setDirection(prevDir => {
+      switch (e.key) {
+        case 'ArrowUp':
+          return prevDir.y !== 1 ? { x: 0, y: -1 } : prevDir;
+        case 'ArrowDown':
+          return prevDir.y !== -1 ? { x: 0, y: 1 } : prevDir;
+        case 'ArrowLeft':
+          return prevDir.x !== 1 ? { x: -1, y: 0 } : prevDir;
+        case 'ArrowRight':
+          return prevDir.x !== -1 ? { x: 1, y: 0 } : prevDir;
+        case ' ': // Spacebar to pause
+          setIsPaused(p => !p);
+          return prevDir;
+        default:
+          return prevDir;
       }
-
-      setDirection(prevDir => {
-        switch (e.key) {
-          case 'ArrowUp':
-            return prevDir.y !== 1 ? { x: 0, y: -1 } : prevDir;
-          case 'ArrowDown':
-            return prevDir.y !== -1 ? { x: 0, y: 1 } : prevDir;
-          case 'ArrowLeft':
-            return prevDir.x !== 1 ? { x: -1, y: 0 } : prevDir;
-          case 'ArrowRight':
-            return prevDir.x !== -1 ? { x: 1, y: 0 } : prevDir;
-          case ' ': // Spacebar to pause
-            setIsPaused(p => !p);
-            return prevDir;
-          default:
-            return prevDir;
-        }
-      });
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+    });
+  };
 
   useEffect(() => {
     if (gameOver || isPaused) return;
@@ -119,8 +114,20 @@ const Snake = () => {
     return () => clearInterval(gameInterval);
   }, [direction, food, gameOver, isPaused, highScore, generateFood]);
 
+  const containerRef = React.useRef(null);
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.focus();
+    }
+  }, []);
+
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100%', color: 'var(--text-primary)', padding: '20px' }}>
+    <div 
+      ref={containerRef}
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100%', color: 'var(--text-primary)', padding: '20px', outline: 'none' }}
+    >
       <div style={{ marginBottom: '20px', textAlign: 'center', width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div style={{ fontSize: '18px', fontWeight: 'bold' }}>Score: {score}</div>
         <h2 style={{ fontSize: '24px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '8px', margin: 0 }}>

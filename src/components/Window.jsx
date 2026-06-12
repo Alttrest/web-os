@@ -76,7 +76,7 @@ const Window = ({
 
   return (
     <motion.div
-      className={`glass ${isActive ? 'ring-1 ring-primary/50' : ''}`}
+      className={`glass ${isActive ? 'ring-1 ring-primary/50' : ''} ${window.isMaximized ? 'maximized-window' : ''}`}
       style={{
         ...windowStyle,
         boxShadow: isActive ? '0 12px 48px 0 rgba(0,0,0,0.45)' : 'var(--glass-shadow)',
