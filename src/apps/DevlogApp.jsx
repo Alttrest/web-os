@@ -14,7 +14,8 @@ const DevlogApp = () => {
     if (existingContent) {
       setContent(existingContent);
     } else {
-      const initialContent = `# My Stardance Devlog\n\n**Day 1:** Created the ultimate Web OS.\n**Day 2:** Integrated a Virtual File System, Terminal, and Camera!\n\n*(Click Edit to add your own entries)*`;
+      const initialContent = `# My Stardance Devlog\n\n**Day 1:** I am trying to add a folder mechanic for my OS and I want to make a PDF doc editor with STL viewer.\n\n**Day 2:** I added an STL viewer and 3D viewer. I added a Python editor based on Monaco editor. I finished the filesystem. I saw some bugs about the window system localhost before the deployment update and I fixed them.`;
+
       setContent(initialContent);
       writeFile(['Documents'], 'DEVLOG.md', initialContent);
     }
