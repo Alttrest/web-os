@@ -36,8 +36,8 @@ You can run `alttre.os` directly on your local machine.
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/alttre.os.git
-   cd alttre.os
+   git clone https://github.com/Alttrest/web-os.git
+   cd web-os
    ```
 
 2. **Install dependencies:**
