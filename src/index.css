@@ -30,28 +30,36 @@
   box-sizing: border-box;
 }
 
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   background-color: var(--bg-color);
   color: var(--text-primary);
-  overflow: hidden; /* Prevent scrolling on desktop */
   user-select: none; /* Prevent text selection while dragging */
 }
 
 /* Background wallpaper */
 .desktop-bg {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: #111111;
   background-image: radial-gradient(circle at 50% -20%, #222222, #0a0a0a);
   z-index: 0;
   display: flex;
   align-items: center;
-  justifyContent: center;
+  justify-content: center;
 }
+
 
 
 
