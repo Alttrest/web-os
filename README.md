@@ -1,3 +1,15 @@
+<div align="center">
+  <h1>✨ web-os ✨</h1>
+  <p><i>alttre.os is a browser-based operating system that pushes the boundaries of modern web technologies. Steering clear of standard interface patterns, it is designed with deep dark modes, neon accents, and fluid micro-interactions.  Live Demo | Hack Club WebOS 1 Mission</i></p>
+
+  <!-- Badges -->
+  <img src="https://img.shields.io/github/languages/top/Alttrest/web-os?style=for-the-badge&color=blue" alt="Top Language" />
+  <img src="https://img.shields.io/github/repo-size/Alttrest/web-os?style=for-the-badge" alt="Repo Size" />
+  <img src="https://img.shields.io/github/last-commit/Alttrest/web-os?style=for-the-badge" alt="Last Commit" />
+</div>
+
+<br />
+
 # alttre.os
 
 **Liquid Glass | Cyberpunk | Immersive OS**
