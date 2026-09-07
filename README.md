@@ -1,5 +1,1 @@
-<p align="center">
-  <a href="https://github.com/Alttrest/web-os">
-    <img src="https://github-readme-svg-ten.vercel.app/api?username=Alttrest&repo=web-os&theme=dark" alt="web-os Stats" />
-  </a>
-</p>
+<div align="center">\n  <a href="https://github.com/Alttrest/web-os">\n    <img src="readme.svg" alt="web-os" width="100%"/>\n  </a>\n</div>\n
