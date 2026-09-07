@@ -1,4 +1,40 @@
 <div align="center">
+  
+# ✨ web-os ✨
+
+![GitHub Repo stars](https://img.shields.io/github/stars/Alttrest/web-os?style=for-the-badge&color=yellow)
+![GitHub forks](https://img.shields.io/github/forks/Alttrest/web-os?style=for-the-badge&color=blue)
+![GitHub last commit](https://img.shields.io/github/last-commit/Alttrest/web-os?style=for-the-badge&color=green)
+![GitHub top language](https://img.shields.io/github/languages/top/Alttrest/web-os?style=for-the-badge&color=red)
+
+<br/>
+
+  <!-- GitHub Repo Pin Card SVG -->
+  <img src="https://github-readme-stats.vercel.app/api/pin/?username=Alttrest&repo=web-os&theme=radical&show_owner=true" alt="Repo Stats" />
+
+</div>
+
+<br/>
+
+## 📸 Screenshots
+
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="https://placehold.co/600x400/1e1e2e/cdd6f4?text=Screenshot+1" alt="Screenshot 1" width="400"/></td>
+      <td><img src="https://placehold.co/600x400/1e1e2e/cdd6f4?text=Screenshot+2" alt="Screenshot 2" width="400"/></td>
+    </tr>
+    <tr>
+      <td><img src="https://placehold.co/600x400/1e1e2e/cdd6f4?text=Screenshot+3" alt="Screenshot 3" width="400"/></td>
+      <td><img src="https://placehold.co/600x400/1e1e2e/cdd6f4?text=Screenshot+4" alt="Screenshot 4" width="400"/></td>
+    </tr>
+  </table>
+  <p><i>Screenshots of the project in action.</i></p>
+</div>
+
+---
+
+<div align="center">
   <h1>✨ web-os ✨</h1>
   <p><i>alttre.os is a browser-based operating system that pushes the boundaries of modern web technologies. Steering clear of standard interface patterns, it is designed with deep dark modes, neon accents, and fluid micro-interactions.  Live Demo | Hack Club WebOS 1 Mission</i></p>
 
