@@ -1,1 +1,5 @@
-<div align="center">\n  <a href="https://github.com/Alttrest/web-os">\n    <img src="readme.svg" alt="web-os" width="100%"/>\n  </a>\n</div>\n
+<p align="center">
+  <a href="https://github.com/Alttrest/web-os">
+    <img src="readme.svg" width="100%" alt="web-os - Interactive Architecture &amp; Visual Identity" />
+  </a>
+</p>
